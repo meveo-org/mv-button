@@ -7,12 +7,16 @@ export class MvButton extends LitElement {
       selected: { type: Boolean, attribute: true },
       disabled: { type: Boolean, attribute: true },
 
-      // valid type values are: "default", "round", or "outline"
+      //  valid type values are: "default", "round", or "no-border"
       type: { type: String, attribute: true },
-      // valid button-style values are:
-      //      "gradient", "success", "error", "warning", or "info"
-      // default: "success"
-      "button-style": { type: String, attribute: true }
+
+      //  valid button-style values are: "primary", "secondary", "success", "error", "warn", or "info
+      //    default: "success"
+      "button-style": { type: String, attribute: true },
+
+      //  valid fill values are: "solid", "transparent", "gradient"
+      //    default: "success"
+      fill: { type: String, attribute: true }
     };
   }
 
