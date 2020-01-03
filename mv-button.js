@@ -7,15 +7,16 @@ export class MvButton extends LitElement {
       selected: { type: Boolean, attribute: true },
       disabled: { type: Boolean, attribute: true },
 
-      //  valid type values are: "default", "round", or "no-border"
+      //  valid type values are: "default", "circle", "rounded", or "outline"
       type: { type: String, attribute: true },
 
-      //  valid button-style values are: "primary", "secondary", "success", "error", "warn", or "info
-      //    default: "success"
+      //  valid button-style values are: "success", "error", "info", or "cancel"
+      //  default: "success"
       "button-style": { type: String, attribute: true },
 
+      //  TODO - not yet implemented
       //  valid fill values are: "solid", "transparent", "gradient"
-      //    default: "success"
+      //  default: "solid"
       fill: { type: String, attribute: true }
     };
   }
@@ -24,86 +25,215 @@ export class MvButton extends LitElement {
     return css`
 			:host {
 				font-family: var(--font-family, Arial);
-				font-size: var(--font-size-m, 10pt);				
+				--font-size: var(--mv-button-font-size, 16px);
+        --circle-button-size: var(--mv-button-circle-button-size, 55px);
+        --button-margin: var(--mv-button-margin, 5px);
+        --button-padding: var(--mv-button-padding, 10px 30px);
+        --button-min-width: var(--mv-button-min-width, 120px);
+        --rounded-radius: var(--mv-button-rounded-radius, 50px);
       }
 
       button {
-        margin: var(--mv-button-margin, 5px);
+        min-width: var(--button-min-width);
+        font-size: var(--font-size);
+        margin: var(--mv-margin);
       }
 
-      button.round {
-        width: 55px;
-        min-width: 55px;
-        height: 55px;
-        font-size: 16px;
+      button:focus {
+        outline: none;
+      }
+
+      button:hover:not([disabled]) {
+        cursor: pointer;        
+      }
+
+      button.circle {
+        min-width: var(--circle-button-size);
+        height: var(--circle-button-size);
         background-color: #EAEBF0;
         color: #80828C;
-        border-radius: 55px;
+        border-radius: 50%;
         box-shadow: unset;
         border: none;        
       }
       
-      button.round:hover:not([disabled]) {
+      button.circle:hover:not([disabled]) {
         cursor: pointer;
-        background-color: #FFFFFF;
         color: #1D9BC9;
         border: 1px solid #1D9BC9;
+        background-color: #FFFFFF;
         box-shadow: inset 0px 0px 9px 0px rgba(29, 155, 201, 0.3);
       }
       
-      button.round.selected, button.round.selected:disabled {
-        background-color: #008FC3;
+      button.circle.selected, button.circle.selected:disabled {
         color: #FFFFFF;
+        background-color: #008FC3;
         box-shadow: 0px 0px 10px 0px rgba(0, 143, 195, 0.6);
         z-index: 100;
       }
 
-      button.round:disabled {
+      button.circle:disabled {
         background-color: #EAEBF0;
         color: #CACBD2;
         z-index: 100;
       }
       
-      button:focus {
-        outline: none;
-      }
-
       button.default {
-        border: none;
+        border-width: 1px;
+        border-style: solid;
         border-radius: 5px;
         box-shadow: 0 2px 2px 0 rgba(93, 94, 97, 0.2);
-        padding: var(--mv-button-padding, 16px 59px);
-      }
-
-      button.default:hover:not([disabled]) {
-        cursor: pointer;        
+        padding: var(--button-padding);
       }
 
       button.default.success {
         color: #FFFFFF;
+        border-color: #54CA95;
         background-color: #54CA95;
       }
 
       button.default.success:hover:not([disabled]) {
+        border-color: #0CA361;
         background-color: #0CA361;
       }
 
       button.default.error {
         color: #FFFFFF;
+        border-color: #DD5C55;
         background-color: #DD5C55;
       }
 
       button.default.error:hover:not([disabled]) {
+        border-color: #E71919;
         background-color: #E71919;
       }
 
       button.default.info {
         color: #FFFFFF;
+        border-color: #3999C1;
         background-color: #3999C1;
       }
 
       button.default.info:hover:not([disabled]) {
+        border-color: #007FAD;
         background-color: #007FAD;
+      }
+
+      button.default.cancel {
+        color: #FFFFFF;
+        border-color: #BBBFCE;
+        background-color: #BBBFCE;
+      }
+
+      button.default.cancel:hover:not([disabled]) {
+        border-color: #9297A6;
+        background-color: #9297A6;
+      }
+
+      button.outline {
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 5px;
+        box-shadow: 0 2px 2px 0 rgba(93, 94, 97, 0.2);
+        padding: var(--button-padding);
+        background: transparent;        
+      }
+
+      button.outline.success {
+        color: #54CA95;
+        border-color: #54CA95;
+      }
+
+      button.outline.success:hover:not([disabled]) {
+        color: #FFFFFF;
+        border-color: #0CA361;
+        background-color: #0CA361;
+      }
+
+      button.outline.error {
+        color: #DD5C55;
+        border-color: #DD5C55;
+      }
+
+      button.outline.error:hover:not([disabled]) {
+        color: #FFFFFF;
+        border-color: #E71919;
+        background-color: #E71919;
+      }
+
+      button.outline.info {
+        color: #3999C1;
+        border-color: #3999C1;
+      }
+
+      button.outline.info:hover:not([disabled]) {
+        color: #FFFFFF;
+        border-color: #007FAD;
+        background-color: #007FAD;
+      }
+
+      button.outline.cancel {
+        color: #BBBFCE;
+        border-color: #BBBFCE;
+      }
+
+      button.outline.cancel:hover:not([disabled]) {
+        color: #FFFFFF;
+        border-color: #9297A6;
+        background-color: #9297A6;
+      }
+
+      button.rounded {
+        border-width: 1px;
+        border-style: solid;
+        border-radius: var(--rounded-radius);
+        box-shadow: 0 2px 2px 0 rgba(93, 94, 97, 0.2);
+        padding: var(--button-padding);
+        background: transparent;        
+      }
+
+      button.rounded.success {
+        color: #54CA95;
+        border-color: #54CA95;
+      }
+
+      button.rounded.success:hover:not([disabled]) {
+        color: #FFFFFF;
+        border-color: #0CA361;
+        background-color: #0CA361;
+      }
+
+      button.rounded.error {
+        color: #DD5C55;
+        border-color: #DD5C55;
+      }
+
+      button.rounded.error:hover:not([disabled]) {
+        color: #FFFFFF;
+        border-color: #E71919;
+        background-color: #E71919;
+      }
+
+      button.rounded.info {
+        color: #3999C1;
+        border-color: #3999C1;
+      }
+
+      button.rounded.info:hover:not([disabled]) {
+        color: #FFFFFF;
+        border-color: #007FAD;
+        background-color: #007FAD;
+      }
+
+      button.rounded.cancel {
+        color: #BBBFCE;
+        border-color: #BBBFCE;
+      }
+
+      button.rounded.cancel:hover:not([disabled]) {
+        color: #FFFFFF;
+        border-color: #9297A6;
+        background-color: #9297A6;
       }
 
 		`;
@@ -116,11 +246,6 @@ export class MvButton extends LitElement {
     this.disabled = false;
     this.type = "default";
     this["button-style"] = "success";
-  }
-
-  handleClick(event) {
-    event && event.stopImmediatePropagation();
-    this.dispatchEvent(new CustomEvent("button-clicked"));
   }
 
   render() {
@@ -139,6 +264,11 @@ export class MvButton extends LitElement {
         `
       : html``;
   }
+
+  handleClick = event => {
+    event && event.stopImmediatePropagation();
+    this.dispatchEvent(new CustomEvent("button-clicked"));
+  };
 }
 
 customElements.define("mv-button", MvButton);
