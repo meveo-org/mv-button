@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element";
 import "mv-container";
-import "mv-fa";
+import "mv-font-awesome";
 import "./mv-button.js";
 
 export class MvButtonDemo extends LitElement {
