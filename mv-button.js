@@ -36,7 +36,7 @@ export class MvButton extends LitElement {
       button {
         min-width: var(--button-min-width);
         font-size: var(--font-size);
-        margin: var(--mv-margin);
+        margin: var(--button-margin);
       }
 
       button:focus {
