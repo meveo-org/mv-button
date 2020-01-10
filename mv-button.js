@@ -25,7 +25,7 @@ export class MvButton extends LitElement {
     return css`
 			:host {
 				font-family: var(--font-family, Arial);
-				--font-size: var(--mv-button-font-size, 16px);
+				--font-size: var(--font-size-m, 16px);
         --circle-button-size: var(--mv-button-circle-button-size, 55px);
         --button-margin: var(--mv-button-margin, 5px);
         --button-padding: var(--mv-button-padding, 10px 30px);
@@ -44,7 +44,7 @@ export class MvButton extends LitElement {
       }
 
       button:hover:not([disabled]) {
-        cursor: pointer;        
+        cursor: pointer;
       }
 
       button.circle {
@@ -54,9 +54,9 @@ export class MvButton extends LitElement {
         color: #80828C;
         border-radius: 50%;
         box-shadow: unset;
-        border: none;        
+        border: none;
       }
-      
+
       button.circle:hover:not([disabled]) {
         cursor: pointer;
         color: #1D9BC9;
@@ -64,7 +64,7 @@ export class MvButton extends LitElement {
         background-color: #FFFFFF;
         box-shadow: inset 0px 0px 9px 0px rgba(29, 155, 201, 0.3);
       }
-      
+
       button.circle.selected, button.circle.selected:disabled {
         color: #FFFFFF;
         background-color: #008FC3;
@@ -77,7 +77,7 @@ export class MvButton extends LitElement {
         color: #CACBD2;
         z-index: 100;
       }
-      
+
       button.default {
         border-width: 1px;
         border-style: solid;
@@ -136,7 +136,7 @@ export class MvButton extends LitElement {
         border-radius: 5px;
         box-shadow: 0 2px 2px 0 rgba(93, 94, 97, 0.2);
         padding: var(--button-padding);
-        background: transparent;        
+        background: transparent;
       }
 
       button.outline.success {
@@ -189,7 +189,7 @@ export class MvButton extends LitElement {
         border-radius: var(--rounded-radius);
         box-shadow: 0 2px 2px 0 rgba(93, 94, 97, 0.2);
         padding: var(--button-padding);
-        background: transparent;        
+        background: transparent;
       }
 
       button.rounded.success {
