@@ -34,6 +34,7 @@ export class MvButton extends LitElement {
         --background-color: var(--mv-button-background-color, #54CA95);
         --hover-background-color: var(--mv-button-hover-background-color, #0CA361);
         --color: var(--mv-button-color, #FFFFFF);
+        --circle-background-color: var(--mv-button-circle-background-color);
       }
 
       button {
@@ -62,15 +63,15 @@ export class MvButton extends LitElement {
 
       button.circle:hover:not([disabled]) {
         cursor: pointer;
-        color: #1D9BC9;
-        border: 1px solid #1D9BC9;
+        color: var(--circle-background-color, #1D9BC9);
+        border: 1px solid var(--circle-background-color, #1D9BC9);
         background-color: #FFFFFF;
         box-shadow: inset 0px 0px 9px 0px rgba(29, 155, 201, 0.3);
       }
 
       button.circle.selected, button.circle.selected:disabled {
         color: #FFFFFF;
-        background-color: #008FC3;
+        background-color: var(--circle-background-color, #008FC3);
         box-shadow: 0px 0px 10px 0px rgba(0, 143, 195, 0.6);
         z-index: 100;
       }
