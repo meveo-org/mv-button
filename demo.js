@@ -6,7 +6,10 @@ import "./mv-button.js";
 export class MvButtonDemo extends LitElement {
   static get properties() {
     return {
-      value: { type: Number, attribute: false, reflect: false }
+      value: { type: Number, attribute: false, reflect: false },
+      hue: { type: Number, attribute: false, reflect: false },
+      saturation: { type: Number, attribute: false, reflect: false },
+      lightness: { type: Number, attribute: false, reflect: false }
     };
   }
 
@@ -41,15 +44,59 @@ export class MvButtonDemo extends LitElement {
       .value {
         font-size: 20px;
       }
+      
+      .slidecontainer {
+        width: 100%;
+      }
+      
+      .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 15px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+      }
+      
+      .slider:hover {
+        opacity: 1;
+      }
+      
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer;
+      }
+      
+      .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer;
+      }
     `;
   }
 
   constructor() {
     super();
     this.value = 0;
+    this.hue = 153;
+    this.saturation = 53;
+    this.lightness = 56;
   }
 
   render() {
+    const color =
+        `--mv-button-background-color: hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%);
+        --mv-button-hover-background-color: hsl(${this.hue}, ${this.saturation}%, ${this.lightness - 15}%);`;
     return html`
     <mv-container>
       <div>
@@ -100,6 +147,20 @@ export class MvButtonDemo extends LitElement {
           ><mv-fa icon="undo"></mv-fa></mv-button>
         </p>
       </div>
+      <h3>Customize the theme with HSL colors</h3>
+      Hue: ${this.hue}
+      <div class="slidecontainer">
+        <input type="range" min="1" max="360" value="${this.hue}" class="slider" @input="${this.changeHue}">
+      </div>
+      Saturation: ${this.saturation}%
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="${this.saturation}" class="slider" @input="${this.changeSaturation}">
+      </div>
+      Lightness: ${this.lightness}%
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="${this.lightness}" class="slider" @input="${this.changeLightness}">
+      </div>
+      <mv-button style="${color}">Success</mv-button>
     </mv-container>
     `;
   }
@@ -112,6 +173,18 @@ export class MvButtonDemo extends LitElement {
 
   resetValue = () => {
     this.value = 0;
+  };
+
+  changeHue = event => {
+    this.hue = event.currentTarget.value;
+  };
+
+  changeSaturation = event => {
+    this.saturation = event.currentTarget.value;
+  };
+
+  changeLightness = event => {
+    this.lightness = event.currentTarget.value;
   };
 }
 

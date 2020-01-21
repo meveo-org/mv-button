@@ -23,14 +23,17 @@ export class MvButton extends LitElement {
 
   static get styles() {
     return css`
-			:host {
-				font-family: var(--font-family, Arial);
-				--font-size: var(--font-size-m, 16px);
+	  :host {
+		font-family: var(--font-family, Arial);
+	    --font-size: var(--font-size-m, 16px);
         --circle-button-size: var(--mv-button-circle-button-size, 55px);
         --button-margin: var(--mv-button-margin, 5px);
         --button-padding: var(--mv-button-padding, 10px 30px);
         --button-min-width: var(--mv-button-min-width, 120px);
         --rounded-radius: var(--mv-button-rounded-radius, 50px);
+        --background-color: var(--mv-button-background-color, #54CA95);
+        --hover-background-color: var(--mv-button-hover-background-color, #0CA361);
+        --color: var(--mv-button-color, #FFFFFF);
       }
 
       button {
@@ -87,14 +90,14 @@ export class MvButton extends LitElement {
       }
 
       button.default.success {
-        color: #FFFFFF;
-        border-color: #54CA95;
-        background-color: #54CA95;
+        color: var(--color);
+        border-color: var(--background-color);
+        background-color: var(--background-color);
       }
 
       button.default.success:hover:not([disabled]) {
-        border-color: #0CA361;
-        background-color: #0CA361;
+        border-color: var(--hover-background-color);
+        background-color: var(--hover-background-color);
       }
 
       button.default.error {
