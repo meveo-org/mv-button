@@ -7,9 +7,8 @@ export class MvButtonDemo extends LitElement {
   static get properties() {
     return {
       value: { type: Number, attribute: false, reflect: false },
-      hue: { type: Number, attribute: false, reflect: false },
-      saturation: { type: Number, attribute: false, reflect: false },
-      lightness: { type: Number, attribute: false, reflect: false }
+      open: { type: Boolean, attribute: true },
+      theme: { type: String, attribute: true }
     };
   }
 
@@ -45,42 +44,15 @@ export class MvButtonDemo extends LitElement {
         font-size: 20px;
       }
       
-      .slidecontainer {
-        width: 100%;
-      }
-      
-      .slider {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 15px;
-        border-radius: 5px;
-        background: #d3d3d3;
-        outline: none;
-        opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-      }
-      
-      .slider:hover {
-        opacity: 1;
-      }
-      
-      .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: #4CAF50;
+      mv-fa[icon="lightbulb"] {
+        font-size: 50px;
         cursor: pointer;
+        margin: 20px;
       }
       
-      .slider::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: #4CAF50;
-        cursor: pointer;
+      .theme {
+        display: flex;
+        justify-content: flex-start;
       }
     `;
   }
@@ -88,39 +60,38 @@ export class MvButtonDemo extends LitElement {
   constructor() {
     super();
     this.value = 0;
-    this.hue = 153;
-    this.saturation = 53;
-    this.lightness = 56;
+    this.open = true;
+    this.theme = "light";
   }
 
   render() {
-    const color =
-        `--mv-button-background-color: hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%);
-        --mv-button-hover-background-color: hsl(${this.hue}, ${this.saturation}%, ${this.lightness - 15}%);`;
     return html`
+    <div class="theme">
+      <mv-fa icon="lightbulb" style="color: ${this.open ? "yellow" : ""}" @click=${this.toggleLightBulb}></mv-fa>
+    </div>
     <mv-container>
       <div>
         <h3>Button Types</h3>
         <h4>Default</h4>
-        <mv-button>Success</mv-button>
-        <mv-button button-style="error">Error</mv-button>
-        <mv-button button-style="info">Info</mv-button>
-        <mv-button button-style="cancel">Cancel</mv-button>
+        <mv-button .theme="${this.theme}">Success</mv-button>
+        <mv-button button-style="error" .theme="${this.theme}">Error</mv-button>
+        <mv-button button-style="info" .theme="${this.theme}">Info</mv-button>
+        <mv-button button-style="cancel" .theme="${this.theme}">Cancel</mv-button>
 
         <h4>Circle</h4>
-        <mv-button type="circle"><mv-fa icon="plus"></mv-fa></mv-button>
+        <mv-button type="circle" .theme="${this.theme}"><mv-fa icon="plus"></mv-fa></mv-button>
         
         <h4>Rounded</h4>
-        <mv-button type="rounded">Success</mv-button>
-        <mv-button type="rounded" button-style="error">Error</mv-button>
-        <mv-button type="rounded" button-style="info">Info</mv-button>
-        <mv-button type="rounded" button-style="cancel">Cancel</mv-button>
+        <mv-button type="rounded" .theme="${this.theme}">Success</mv-button>
+        <mv-button type="rounded" button-style="error" .theme="${this.theme}">Error</mv-button>
+        <mv-button type="rounded" button-style="info" .theme="${this.theme}">Info</mv-button>
+        <mv-button type="rounded" button-style="cancel" .theme="${this.theme}">Cancel</mv-button>
 
         <h4>Outline</h4>
-        <mv-button type="outline">Success</mv-button>
-        <mv-button type="outline" button-style="error">Error</mv-button>
-        <mv-button type="outline" button-style="info">Info</mv-button>
-        <mv-button type="outline" button-style="cancel">Cancel</mv-button>
+        <mv-button type="outline" .theme="${this.theme}">Success</mv-button>
+        <mv-button type="outline" button-style="error" .theme="${this.theme}">Error</mv-button>
+        <mv-button type="outline" button-style="info" .theme="${this.theme}">Info</mv-button>
+        <mv-button type="outline" button-style="cancel" .theme="${this.theme}">Cancel</mv-button>
       </div>
 
       <h3 class="click-demo-label">Click event handling</h3>
@@ -129,6 +100,7 @@ export class MvButtonDemo extends LitElement {
           class="small-button"
           @button-clicked="${this.changeValue(-1)}"
           ?disabled="${this.value < 1}"
+          .theme="${this.theme}"
         >
           <mv-fa icon="minus"></mv-fa>
         </mv-button>
@@ -136,6 +108,7 @@ export class MvButtonDemo extends LitElement {
         <mv-button
           class="small-button"
           @button-clicked="${this.changeValue(1)}"
+          .theme="${this.theme}"
         >
           <mv-fa icon="plus"></mv-fa>
         </mv-button>      
@@ -144,23 +117,10 @@ export class MvButtonDemo extends LitElement {
             class="small-button"
             @button-clicked="${this.resetValue}"
             button-style="error"
+            .theme="${this.theme}"
           ><mv-fa icon="undo"></mv-fa></mv-button>
         </p>
       </div>
-      <h3>Customize the theme with HSL colors</h3>
-      Hue: ${this.hue}
-      <div class="slidecontainer">
-        <input type="range" min="1" max="360" value="${this.hue}" class="slider" @input="${this.changeHue}">
-      </div>
-      Saturation: ${this.saturation}%
-      <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="${this.saturation}" class="slider" @input="${this.changeSaturation}">
-      </div>
-      Lightness: ${this.lightness}%
-      <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="${this.lightness}" class="slider" @input="${this.changeLightness}">
-      </div>
-      <mv-button style="${color}">Success</mv-button>
     </mv-container>
     `;
   }
@@ -175,16 +135,13 @@ export class MvButtonDemo extends LitElement {
     this.value = 0;
   };
 
-  changeHue = event => {
-    this.hue = event.currentTarget.value;
-  };
-
-  changeSaturation = event => {
-    this.saturation = event.currentTarget.value;
-  };
-
-  changeLightness = event => {
-    this.lightness = event.currentTarget.value;
+  toggleLightBulb = () => {
+    this.open = !this.open;
+    if (this.open) {
+      this.theme = "light";
+    } else {
+      this.theme = "dark";
+    }
   };
 }
 
