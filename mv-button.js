@@ -59,8 +59,8 @@ export class MvButton extends LitElement {
       button.circle {
         min-width: var(--circle-button-size);
         height: var(--circle-button-size);
-        background-color: #EAEBF0;
-        color: #80828C;
+        background-color: var(--mv-button-circle-background, #EAEBF0);
+        color: var(--mv-button-circle-color, #80828C);
         border-radius: 50%;
         box-shadow: unset;
         border: none;
@@ -70,7 +70,7 @@ export class MvButton extends LitElement {
         cursor: pointer;
         color: var(--background-color, #1D9BC9);
         border: 1px solid var(--background-color, #1D9BC9);
-        background-color: #FFFFFF;
+        background-color: var(--mv-button-circle-hover-background, #FFFFFF);
         box-shadow: inset 0px 0px 9px 0px rgba(29, 155, 201, 0.3);
       }
 
@@ -82,7 +82,7 @@ export class MvButton extends LitElement {
       }
 
       button.circle:disabled {
-        background-color: #EAEBF0;
+        background-color: var(--mv-button-circle-background, #EAEBF0);
         color: #CACBD2;
         z-index: 100;
       }

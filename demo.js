@@ -65,11 +65,14 @@ export class MvButtonDemo extends LitElement {
   }
 
   render() {
+    const containerTheme = this.open ? "dark" : "light";
+    const textColor = `color: ${this.open ? "#FFFFFF" : ""}`;
+    const iconColor = `color: ${this.open ? "yellow" : ""}`;
     return html`
     <div class="theme">
-      <mv-fa icon="lightbulb" style="color: ${this.open ? "yellow" : ""}" @click=${this.toggleLightBulb}></mv-fa>
+      <mv-fa icon="lightbulb" style="${iconColor}" @click=${this.toggleLightBulb}></mv-fa>
     </div>
-    <mv-container>
+    <mv-container .theme="${containerTheme}" style="${textColor}">
       <div>
         <h3>Button Types</h3>
         <h4>Default</h4>
