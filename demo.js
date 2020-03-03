@@ -7,7 +7,6 @@ export class MvButtonDemo extends LitElement {
   static get properties() {
     return {
       value: { type: Number, attribute: false, reflect: false },
-      open: { type: Boolean, attribute: true },
       theme: { type: String, attribute: true }
     };
   }
@@ -44,15 +43,23 @@ export class MvButtonDemo extends LitElement {
         font-size: 20px;
       }
       
-      mv-fa[icon="lightbulb"] {
-        font-size: 50px;
+      fieldset > label, label > input {
         cursor: pointer;
-        margin: 20px;
       }
       
-      .theme {
-        display: flex;
-        justify-content: flex-start;
+      fieldset {
+        width: 120px;
+        margin-left: 10px;
+        border:2px solid red;
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;	
+        border-radius:8px;
+        color: #818181;
+      }
+      
+      legend {
+        font-weight: 500;
+        color: red;
       }
     `;
   }
@@ -60,41 +67,42 @@ export class MvButtonDemo extends LitElement {
   constructor() {
     super();
     this.value = 0;
-    this.open = true;
-    this.theme = "light";
+    this.theme = "dark";
   }
 
   render() {
-    const containerTheme = this.open ? "dark" : "light";
-    const textColor = `color: ${this.open ? "#FFFFFF" : ""}`;
-    const iconColor = `color: ${this.open ? "yellow" : ""}`;
+    const isLightTheme = this.theme === "light";
+    const buttonTheme = isLightTheme ? "dark" : "light";
+    const textColor = `color: ${isLightTheme ? "" : "#FFFFFF"}`;
     return html`
-    <div class="theme">
-      <mv-fa icon="lightbulb" style="${iconColor}" @click=${this.toggleLightBulb}></mv-fa>
-    </div>
-    <mv-container .theme="${containerTheme}" style="${textColor}">
+    <fieldset>
+      <legend>Theme</legend>
+      <label><input type="radio" name="theme" value="light" @change="${this.radioChange}" />Light</label>
+      <label><input type="radio" name="theme" value="dark" checked @change="${this.radioChange}" />Dark</label>
+    </fieldset>
+    <mv-container .theme="${this.theme}" style="${textColor}">
       <div>
         <h3>Button Types</h3>
         <h4>Default</h4>
-        <mv-button .theme="${this.theme}">Success</mv-button>
-        <mv-button button-style="error" .theme="${this.theme}">Error</mv-button>
-        <mv-button button-style="info" .theme="${this.theme}">Info</mv-button>
-        <mv-button button-style="cancel" .theme="${this.theme}">Cancel</mv-button>
+        <mv-button .theme="${buttonTheme}">Success</mv-button>
+        <mv-button button-style="error" .theme="${buttonTheme}">Error</mv-button>
+        <mv-button button-style="info" .theme="${buttonTheme}">Info</mv-button>
+        <mv-button button-style="cancel" .theme="${buttonTheme}">Cancel</mv-button>
 
         <h4>Circle</h4>
-        <mv-button type="circle" .theme="${this.theme}"><mv-fa icon="plus"></mv-fa></mv-button>
+        <mv-button type="circle" .theme="${buttonTheme}"><mv-fa icon="plus"></mv-fa></mv-button>
         
         <h4>Rounded</h4>
-        <mv-button type="rounded" .theme="${this.theme}">Success</mv-button>
-        <mv-button type="rounded" button-style="error" .theme="${this.theme}">Error</mv-button>
-        <mv-button type="rounded" button-style="info" .theme="${this.theme}">Info</mv-button>
-        <mv-button type="rounded" button-style="cancel" .theme="${this.theme}">Cancel</mv-button>
+        <mv-button type="rounded" .theme="${buttonTheme}">Success</mv-button>
+        <mv-button type="rounded" button-style="error" .theme="${buttonTheme}">Error</mv-button>
+        <mv-button type="rounded" button-style="info" .theme="${buttonTheme}">Info</mv-button>
+        <mv-button type="rounded" button-style="cancel" .theme="${buttonTheme}">Cancel</mv-button>
 
         <h4>Outline</h4>
-        <mv-button type="outline" .theme="${this.theme}">Success</mv-button>
-        <mv-button type="outline" button-style="error" .theme="${this.theme}">Error</mv-button>
-        <mv-button type="outline" button-style="info" .theme="${this.theme}">Info</mv-button>
-        <mv-button type="outline" button-style="cancel" .theme="${this.theme}">Cancel</mv-button>
+        <mv-button type="outline" .theme="${buttonTheme}">Success</mv-button>
+        <mv-button type="outline" button-style="error" .theme="${buttonTheme}">Error</mv-button>
+        <mv-button type="outline" button-style="info" .theme="${buttonTheme}">Info</mv-button>
+        <mv-button type="outline" button-style="cancel" .theme="${buttonTheme}">Cancel</mv-button>
       </div>
 
       <h3 class="click-demo-label">Click event handling</h3>
@@ -103,7 +111,7 @@ export class MvButtonDemo extends LitElement {
           class="small-button"
           @button-clicked="${this.changeValue(-1)}"
           ?disabled="${this.value < 1}"
-          .theme="${this.theme}"
+          .theme="${buttonTheme}"
         >
           <mv-fa icon="minus"></mv-fa>
         </mv-button>
@@ -111,7 +119,7 @@ export class MvButtonDemo extends LitElement {
         <mv-button
           class="small-button"
           @button-clicked="${this.changeValue(1)}"
-          .theme="${this.theme}"
+          .theme="${buttonTheme}"
         >
           <mv-fa icon="plus"></mv-fa>
         </mv-button>      
@@ -120,7 +128,7 @@ export class MvButtonDemo extends LitElement {
             class="small-button"
             @button-clicked="${this.resetValue}"
             button-style="error"
-            .theme="${this.theme}"
+            .theme="${buttonTheme}"
           ><mv-fa icon="undo"></mv-fa></mv-button>
         </p>
       </div>
@@ -138,9 +146,9 @@ export class MvButtonDemo extends LitElement {
     this.value = 0;
   };
 
-  toggleLightBulb = () => {
-    this.open = !this.open;
-    if (this.open) {
+  radioChange = originalEvent => {
+    const { target: { value } } = originalEvent;
+    if (value === "light") {
       this.theme = "light";
     } else {
       this.theme = "dark";
