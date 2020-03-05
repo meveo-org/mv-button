@@ -67,42 +67,40 @@ export class MvButtonDemo extends LitElement {
   constructor() {
     super();
     this.value = 0;
-    this.theme = "dark";
+    this.theme = "light";
   }
 
   render() {
-    const isLightTheme = this.theme === "light";
-    const buttonTheme = isLightTheme ? "dark" : "light";
-    const textColor = `color: ${isLightTheme ? "" : "#FFFFFF"}`;
+    const { theme } = this;
     return html`
     <fieldset>
       <legend>Theme</legend>
-      <label><input type="radio" name="theme" value="light" @change="${this.radioChange}" />Light</label>
-      <label><input type="radio" name="theme" value="dark" checked @change="${this.radioChange}" />Dark</label>
+      <label><input type="radio" name="theme" value="light" checked @change="${this.changeTheme}" />Light</label>
+      <label><input type="radio" name="theme" value="dark" @change="${this.changeTheme}" />Dark</label>
     </fieldset>
-    <mv-container .theme="${this.theme}" style="${textColor}">
+    <mv-container .theme="${theme}">
       <div>
         <h3>Button Types</h3>
         <h4>Default</h4>
-        <mv-button .theme="${buttonTheme}">Success</mv-button>
-        <mv-button button-style="error" .theme="${buttonTheme}">Error</mv-button>
-        <mv-button button-style="info" .theme="${buttonTheme}">Info</mv-button>
-        <mv-button button-style="cancel" .theme="${buttonTheme}">Cancel</mv-button>
+        <mv-button .theme="${theme}">Success</mv-button>
+        <mv-button button-style="error" .theme="${theme}">Error</mv-button>
+        <mv-button button-style="info" .theme="${theme}">Info</mv-button>
+        <mv-button button-style="cancel" .theme="${theme}">Cancel</mv-button>
 
         <h4>Circle</h4>
-        <mv-button type="circle" .theme="${buttonTheme}"><mv-fa icon="plus"></mv-fa></mv-button>
+        <mv-button type="circle" .theme="${theme}"><mv-fa icon="plus"></mv-fa></mv-button>
         
         <h4>Rounded</h4>
-        <mv-button type="rounded" .theme="${buttonTheme}">Success</mv-button>
-        <mv-button type="rounded" button-style="error" .theme="${buttonTheme}">Error</mv-button>
-        <mv-button type="rounded" button-style="info" .theme="${buttonTheme}">Info</mv-button>
-        <mv-button type="rounded" button-style="cancel" .theme="${buttonTheme}">Cancel</mv-button>
+        <mv-button type="rounded" .theme="${theme}">Success</mv-button>
+        <mv-button type="rounded" button-style="error" .theme="${theme}">Error</mv-button>
+        <mv-button type="rounded" button-style="info" .theme="${theme}">Info</mv-button>
+        <mv-button type="rounded" button-style="cancel" .theme="${theme}">Cancel</mv-button>
 
         <h4>Outline</h4>
-        <mv-button type="outline" .theme="${buttonTheme}">Success</mv-button>
-        <mv-button type="outline" button-style="error" .theme="${buttonTheme}">Error</mv-button>
-        <mv-button type="outline" button-style="info" .theme="${buttonTheme}">Info</mv-button>
-        <mv-button type="outline" button-style="cancel" .theme="${buttonTheme}">Cancel</mv-button>
+        <mv-button type="outline" .theme="${theme}">Success</mv-button>
+        <mv-button type="outline" button-style="error" .theme="${theme}">Error</mv-button>
+        <mv-button type="outline" button-style="info" .theme="${theme}">Info</mv-button>
+        <mv-button type="outline" button-style="cancel" .theme="${theme}">Cancel</mv-button>
       </div>
 
       <h3 class="click-demo-label">Click event handling</h3>
@@ -111,7 +109,7 @@ export class MvButtonDemo extends LitElement {
           class="small-button"
           @button-clicked="${this.changeValue(-1)}"
           ?disabled="${this.value < 1}"
-          .theme="${buttonTheme}"
+          .theme="${theme}"
         >
           <mv-fa icon="minus"></mv-fa>
         </mv-button>
@@ -119,7 +117,7 @@ export class MvButtonDemo extends LitElement {
         <mv-button
           class="small-button"
           @button-clicked="${this.changeValue(1)}"
-          .theme="${buttonTheme}"
+          .theme="${theme}"
         >
           <mv-fa icon="plus"></mv-fa>
         </mv-button>      
@@ -128,7 +126,7 @@ export class MvButtonDemo extends LitElement {
             class="small-button"
             @button-clicked="${this.resetValue}"
             button-style="error"
-            .theme="${buttonTheme}"
+            .theme="${theme}"
           ><mv-fa icon="undo"></mv-fa></mv-button>
         </p>
       </div>
@@ -146,13 +144,9 @@ export class MvButtonDemo extends LitElement {
     this.value = 0;
   };
 
-  radioChange = originalEvent => {
+  changeTheme = originalEvent => {
     const { target: { value } } = originalEvent;
-    if (value === "light") {
-      this.theme = "light";
-    } else {
-      this.theme = "dark";
-    }
+    this.theme = value;
   };
 }
 
