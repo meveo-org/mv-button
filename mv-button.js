@@ -191,7 +191,27 @@ export class MvButton extends LitElement {
         border-color: var(--hover-background-color, #9297A6);
         background-color: var(--hover-background-color, #9297A6);
       }
-
+      
+      button.outline.success.selected, button.outline.success.selected:disabled {
+        color: #FFFFFF;
+        background-color: var(--background-color, #0CA361);
+      }
+      
+      button.outline.error.selected, button.outline.error.selected:disabled {
+        color: #FFFFFF;
+        background-color: var(--background-color, #E71919);
+      }
+      
+      button.outline.info.selected, button.outline.info.selected:disabled {
+        color: #FFFFFF;
+        background-color: var(--background-color, #3999C1);
+      }
+      
+      button.outline.cancel.selected, button.outline.cancel.selected:disabled {
+        color: #FFFFFF;
+        background-color: var(--background-color, #9297A6);
+      }
+      
       button.rounded {
         border-width: 1px;
         border-style: solid;
