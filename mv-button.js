@@ -304,8 +304,7 @@ export class MvButton extends LitElement {
       : html``;
   }
 
-  handleClick = event => {
-    event && event.stopImmediatePropagation();
+  handleClick = () => {
     this.dispatchEvent(new CustomEvent("button-clicked"));
   };
 }
