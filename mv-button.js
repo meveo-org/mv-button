@@ -35,11 +35,8 @@ export class MvButton extends LitElement {
         --button-min-width: var(--mv-button-min-width, 120px);
         --rounded-radius: var(--mv-button-rounded-radius, 50px);
         --color: var(--mv-button-color, #ffffff);
-        --hover-light-background: var(--mv-button-hover-light-background);
-        --hover-dark-background: var(
-          --mv-button-hover-dark-background,
-          #23404c
-        );
+        --button-color: var(--mv-button-custom-color);
+        --hover-color: var(--mv-button-custom-hover-color);
       }
 
       button {
@@ -69,8 +66,8 @@ export class MvButton extends LitElement {
 
       button.circle:hover:not([disabled]) {
         cursor: pointer;
-        color: var(--background-color, #1d9bc9);
-        border: 1px solid var(--background-color, #1d9bc9);
+        color: var(--button-color, #1d9bc9);
+        border: 1px solid var(--button-color, #1d9bc9);
         background-color: var(--mv-button-circle-hover-background, #ffffff);
         box-shadow: inset 0px 0px 9px 0px rgba(29, 155, 201, 0.3);
       }
@@ -78,7 +75,7 @@ export class MvButton extends LitElement {
       button.circle.selected,
       button.circle.selected:disabled {
         color: #ffffff;
-        background-color: var(--background-color, #008fc3);
+        background-color: var(--button-color, #008fc3);
         box-shadow: 0px 0px 10px 0px rgba(0, 143, 195, 0.6);
         z-index: 100;
       }
@@ -99,46 +96,46 @@ export class MvButton extends LitElement {
 
       button.default.success {
         color: var(--color);
-        border-color: var(--background-color, #54ca95);
-        background-color: var(--background-color, #54ca95);
+        border-color: var(--button-color, #54ca95);
+        background-color: var(--button-color, #54ca95);
       }
 
       button.default.success:hover:not([disabled]) {
-        border-color: var(--hover-background-color, #0ca361);
-        background-color: var(--hover-background-color, #0ca361);
+        border-color: var(--hover-color, #0ca361);
+        background-color: var(--hover-color, #0ca361);
       }
 
       button.default.error {
         color: #ffffff;
-        border-color: var(--background-color, #dd5c55);
-        background-color: var(--background-color, #dd5c55);
+        border-color: var(--button-color, #dd5c55);
+        background-color: var(--button-color, #dd5c55);
       }
 
       button.default.error:hover:not([disabled]) {
-        border-color: var(--hover-background-color, #e71919);
-        background-color: var(--hover-background-color, #e71919);
+        border-color: var(--hover-color, #e71919);
+        background-color: var(--hover-color, #e71919);
       }
 
       button.default.info {
         color: #ffffff;
-        border-color: var(--background-color, #3999c1);
-        background-color: var(--background-color, #3999c1);
+        border-color: var(--button-color, #3999c1);
+        background-color: var(--button-color, #3999c1);
       }
 
       button.default.info:hover:not([disabled]) {
-        border-color: var(--hover-background-color, #007fad);
-        background-color: var(--hover-background-color, #007fad);
+        border-color: var(--hover-color, #007fad);
+        background-color: var(--hover-color, #007fad);
       }
 
       button.default.cancel {
         color: #ffffff;
-        border-color: var(--background-color, #bbbfce);
-        background-color: var(--background-color, #bbbfce);
+        border-color: var(--button-color, #bbbfce);
+        background-color: var(--button-color, #bbbfce);
       }
 
       button.default.cancel:hover:not([disabled]) {
-        border-color: var(--hover-background-color, #9297a6);
-        background-color: var(--hover-background-color, #9297a6);
+        border-color: var(--hover-color, #9297a6);
+        background-color: var(--hover-color, #9297a6);
       }
 
       button.outline {
@@ -151,71 +148,71 @@ export class MvButton extends LitElement {
       }
 
       button.outline.success {
-        color: var(--background-color, #54ca95);
-        border-color: var(--background-color, #54ca95);
+        color: var(--button-color, #54ca95);
+        border-color: var(--button-color, #54ca95);
       }
 
       button.outline.success:hover:not([disabled]) {
         color: #ffffff;
-        border-color: var(--hover-background-color, #0ca361);
-        background-color: var(--hover-background-color, #0ca361);
+        border-color: var(--hover-color, #0ca361);
+        background-color: var(--hover-color, #0ca361);
       }
 
       button.outline.error {
-        color: var(--background-color, #dd5c55);
-        border-color: var(--background-color, #dd5c55);
+        color: var(--button-color, #dd5c55);
+        border-color: var(--button-color, #dd5c55);
       }
 
       button.outline.error:hover:not([disabled]) {
         color: #ffffff;
-        border-color: var(--hover-background-color, #e71919);
-        background-color: var(--hover-background-color, #e71919);
+        border-color: var(--hover-color, #e71919);
+        background-color: var(--hover-color, #e71919);
       }
 
       button.outline.info {
-        color: var(--background-color, #3999c1);
-        border-color: var(--background-color, #3999c1);
+        color: var(--button-color, #3999c1);
+        border-color: var(--button-color, #3999c1);
       }
 
       button.outline.info:hover:not([disabled]) {
         color: #ffffff;
-        border-color: var(--hover-background-color, #007fad);
-        background-color: var(--hover-background-color, #007fad);
+        border-color: var(--hover-color, #007fad);
+        background-color: var(--hover-color, #007fad);
       }
 
       button.outline.cancel {
-        color: var(--background-color, #bbbfce);
-        border-color: var(--background-color, #bbbfce);
+        color: var(--button-color, #bbbfce);
+        border-color: var(--button-color, #bbbfce);
       }
 
       button.outline.cancel:hover:not([disabled]) {
         color: #ffffff;
-        border-color: var(--hover-background-color, #9297a6);
-        background-color: var(--hover-background-color, #9297a6);
+        border-color: var(--hover-color, #9297a6);
+        background-color: var(--hover-color, #9297a6);
       }
 
       button.outline.success.selected,
       button.outline.success.selected:disabled {
         color: #ffffff;
-        background-color: var(--background-color, #0ca361);
+        background-color: var(--button-color, #0ca361);
       }
 
       button.outline.error.selected,
       button.outline.error.selected:disabled {
         color: #ffffff;
-        background-color: var(--background-color, #e71919);
+        background-color: var(--button-color, #e71919);
       }
 
       button.outline.info.selected,
       button.outline.info.selected:disabled {
         color: #ffffff;
-        background-color: var(--background-color, #3999c1);
+        background-color: var(--button-color, #3999c1);
       }
 
       button.outline.cancel.selected,
       button.outline.cancel.selected:disabled {
         color: #ffffff;
-        background-color: var(--background-color, #9297a6);
+        background-color: var(--button-color, #9297a6);
       }
 
       button.rounded {
@@ -228,47 +225,47 @@ export class MvButton extends LitElement {
       }
 
       button.rounded.success {
-        color: var(--background-color, #54ca95);
-        border-color: var(--background-color, #54ca95);
+        color: var(--button-color, #54ca95);
+        border-color: var(--button-color, #54ca95);
       }
 
       button.rounded.success:hover:not([disabled]) {
         color: #ffffff;
-        border-color: var(--hover-background-color, #0ca361);
-        background-color: var(--hover-background-color, #0ca361);
+        border-color: var(--hover-color, #0ca361);
+        background-color: var(--hover-color, #0ca361);
       }
 
       button.rounded.error {
-        color: var(--background-color, #dd5c55);
-        border-color: var(--background-color, #dd5c55);
+        color: var(--button-color, #dd5c55);
+        border-color: var(--button-color, #dd5c55);
       }
 
       button.rounded.error:hover:not([disabled]) {
         color: #ffffff;
-        border-color: var(--hover-background-color, #e71919);
-        background-color: var(--hover-background-color, #e71919);
+        border-color: var(--hover-color, #e71919);
+        background-color: var(--hover-color, #e71919);
       }
 
       button.rounded.info {
-        color: var(--background-color, #3999c1);
-        border-color: var(--background-color, #3999c1);
+        color: var(--button-color, #3999c1);
+        border-color: var(--button-color, #3999c1);
       }
 
       button.rounded.info:hover:not([disabled]) {
         color: #ffffff;
-        border-color: var(--hover-background-color, #007fad);
-        background-color: var(--hover-background-color, #007fad);
+        border-color: var(--hover-color, #007fad);
+        background-color: var(--hover-color, #007fad);
       }
 
       button.rounded.cancel {
-        color: var(--background-color, #bbbfce);
-        border-color: var(--background-color, #bbbfce);
+        color: var(--button-color, #bbbfce);
+        border-color: var(--button-color, #bbbfce);
       }
 
       button.rounded.cancel:hover:not([disabled]) {
         color: #ffffff;
-        border-color: var(--hover-background-color, #9297a6);
-        background-color: var(--hover-background-color, #9297a6);
+        border-color: var(--hover-color, #9297a6);
+        background-color: var(--hover-color, #9297a6);
       }
     `;
   }
