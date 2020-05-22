@@ -35,9 +35,7 @@ export class MvButton extends LitElement {
         --button-min-width: var(--mv-button-min-width, 120px);
         --rounded-radius: var(--mv-button-rounded-radius, 50px);
         --color: var(--mv-button-color, #ffffff);
-        --light-background: var(--mv-button-light-background);
         --hover-light-background: var(--mv-button-hover-light-background);
-        --dark-background: var(--mv-button-dark-background, #4e686d);
         --hover-dark-background: var(
           --mv-button-hover-dark-background,
           #23404c
@@ -271,16 +269,6 @@ export class MvButton extends LitElement {
         color: #ffffff;
         border-color: var(--hover-background-color, #9297a6);
         background-color: var(--hover-background-color, #9297a6);
-      }
-
-      .dark {
-        --background-color: var(--dark-background);
-        --hover-background-color: var(--hover-dark-background);
-      }
-
-      .light {
-        --background-color: var(--light-background);
-        --hover-background-color: var(--hover-light-background);
       }
     `;
   }
