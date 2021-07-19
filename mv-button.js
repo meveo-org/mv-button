@@ -28,7 +28,7 @@ export class MvButton extends LitElement {
   static get styles() {
     return css`
       :host {
-        --font-size: var(--font-size-m, 16px);
+        --font-size: var(--font-size-m, 1rem);
         --circle-button-size: var(--mv-button-circle-button-size, 55px);
         --button-margin: var(--mv-button-margin, 5px);
         --button-padding: var(--mv-button-padding, 10px 30px);
