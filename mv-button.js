@@ -46,6 +46,34 @@ export class MvButton extends LitElement {
         margin: var(--button-margin);
       }
 
+      button.success:disabled {
+        background-color: var(--mv-button-disabled-background, #eaebf0);
+        z-index: 100;
+        color: #bbbfce !important;
+        border-color: #bbbfce !important;
+      }
+
+      button.error:disabled {
+        background-color: var(--mv-button-disabled-background, #eaebf0);
+        z-index: 100;
+        color: #bbbfce !important;
+        border-color: #bbbfce !important;
+      }
+
+      button.info:disabled {
+        background-color: var(--mv-button-disabled-background, #eaebf0);
+        z-index: 100;
+        color: #bbbfce !important;
+        border-color: #bbbfce !important;
+      }
+
+      button.cancel:disabled {
+        background-color: var(--mv-button-disabled-background, #eaebf0);
+        z-index: 100;
+        color:  #bbbfce !important;
+        border-color: #bbbfce !important;
+      }
+
       button:focus {
         outline: none;
       }
