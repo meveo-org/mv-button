@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css } from "lit-element";
 
 export class MvButton extends LitElement {
   static get properties() {
@@ -37,6 +37,11 @@ export class MvButton extends LitElement {
         --color: var(--mv-button-color, #ffffff);
         --button-color: var(--mv-button-custom-color);
         --hover-color: var(--mv-button-custom-hover-color);
+        --hover-light-background: var(--mv-button-hover-light-background);
+        --hover-dark-background: var(
+          --mv-button-hover-dark-background,
+          #23404c
+        );
       }
 
       button {
