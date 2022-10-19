@@ -36,12 +36,8 @@ export class MvButton extends LitElement {
         --rounded-radius: var(--mv-button-rounded-radius, 50px);
         --color: var(--mv-button-color, #ffffff);
         --button-color: var(--mv-button-custom-color);
+        --button-hover-color: var(--mv-button-hover-custom-color)
         --hover-color: var(--mv-button-custom-hover-color);
-        --hover-light-background: var(--mv-button-hover-light-background);
-        --hover-dark-background: var(
-          --mv-button-hover-dark-background,
-          #23404c
-        );
       }
 
       button {
@@ -49,6 +45,30 @@ export class MvButton extends LitElement {
         min-width: var(--button-min-width);
         font-size: var(--font-size);
         margin: var(--button-margin);
+      }
+      button.success:disabled {
+        background-color: var(--mv-button-disabled-background, #eaebf0);
+        z-index: 100;
+        color: #bbbfce !important;
+        border-color: #bbbfce !important;
+      }
+      button.error:disabled {
+        background-color: var(--mv-button-disabled-background, #eaebf0);
+        z-index: 100;
+        color: #bbbfce !important;
+        border-color: #bbbfce !important;
+      }
+      button.info:disabled {
+        background-color: var(--mv-button-disabled-background, #eaebf0);
+        z-index: 100;
+        color: #bbbfce !important;
+        border-color: #bbbfce !important;
+      }
+      button.cancel:disabled {
+        background-color: var(--mv-button-disabled-background, #eaebf0);
+        z-index: 100;
+        color:  #bbbfce !important;
+        border-color: #bbbfce !important;
       }
 
       button:focus {
@@ -71,10 +91,12 @@ export class MvButton extends LitElement {
 
       button.circle:hover:not([disabled]) {
         cursor: pointer;
-        color: var(--button-color, #1d9bc9);
-        border: 1px solid var(--button-color, #1d9bc9);
-        background-color: var(--mv-button-circle-hover-background, #ffffff);
-        box-shadow: inset 0px 0px 9px 0px rgba(29, 155, 201, 0.3);
+        color: var(--button-hover-color, #1d9bc9);
+        border: var(--mv-button-border,1px solid var(--button-color, #1d9bc9));
+        background-color: var(--mv-button-custom-hover-color, #ffffff);
+        box-shadow: var(--mv-button-box-shadow,
+          inset 0px 0px 9px 0px rgba(29, 155, 201, 0.3)
+          );
       }
 
       button.circle.selected,
