@@ -1,6 +1,6 @@
 {
   "name": "@meveo-org/mv-button",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MvButton is a Meveo button component (based on lit-element) that renders a button.",
   "main": "mv-button.js",
   "scripts": {
