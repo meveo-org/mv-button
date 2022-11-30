@@ -40,6 +40,7 @@ export class MvButton extends LitElement {
         --button-color: var(--mv-button-custom-color);
         --button-hover-color: var(--mv-button-hover-custom-color)
         --hover-color: var(--mv-button-custom-hover-color);
+        --button-disabled-border-color: var(--mv-button-disabled-border-color, #bbbfce !important)
       }
       button {
         font-family: var(--font-family, Arial);
@@ -53,25 +54,25 @@ export class MvButton extends LitElement {
         background-color: var(--mv-button-disabled-background, #eaebf0);
         z-index: 100;
         color: #bbbfce !important;
-        border-color: #bbbfce !important;
+        border-color: --button-disabled-border-color;
       }
       button.error:disabled {
         background-color: var(--mv-button-disabled-background, #eaebf0);
         z-index: 100;
         color: #bbbfce !important;
-        border-color: #bbbfce !important;
+        border-color: --button-disabled-border-color;
       }
       button.info:disabled {
         background-color: var(--mv-button-disabled-background, #eaebf0);
         z-index: 100;
         color: #bbbfce !important;
-        border-color: #bbbfce !important;
+        border-color: --button-disabled-border-color;
       }
       button.cancel:disabled {
         background-color: var(--mv-button-disabled-background, #eaebf0);
         z-index: 100;
         color:  #bbbfce !important;
-        border-color: #bbbfce !important;
+        border-color: --button-disabled-border-color;
       }
       button:focus {
         outline: none;
