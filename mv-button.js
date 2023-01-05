@@ -90,7 +90,7 @@ export class MvButton extends LitElement {
         color: var(--mv-button-circle-color, #80828c);
         border-radius: 50%;
         box-shadow: unset;
-        border: none;
+        border: var(--circle-button-border);
       }
       button.circle:hover:not([disabled]) {
         cursor: pointer;
