@@ -40,6 +40,7 @@ export class MvButton extends LitElement {
         --button-color: var(--mv-button-custom-color);
         --button-hover-color: var(--mv-button-hover-custom-color)
         --hover-color: var(--mv-button-custom-hover-color);
+        --circle-button-border: var(--mv-circle-button-border, none);
         --button-disabled-border-color: var(--mv-button-disabled-border-color, #bbbfce !important)
       }
       button {
